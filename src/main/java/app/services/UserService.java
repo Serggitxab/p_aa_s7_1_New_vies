@@ -38,6 +38,15 @@ public class UserService implements UserDetailsService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
+    public boolean isExistById(Long id) {
+        return userRepository.existsById(id);
+    }
+    public List<User> findAllUsers() {
+        return userRepository.findAll();
+    }
+    public User getUser(Long id) {
+        return userRepository.findUserById(id);
+    }
 
     /**Метод сохранения пользователя в зависимости от его класса.
      * Используется на странице admin.html при изменении пользователя.
